@@ -36,7 +36,7 @@ public class SopaDeLetras {
 		while (contPalabrasPuestas<palabrasSopa.length)
 		{
 			int [] posicion = {0, 0};						// Vector posicion que posiciona la palabra
-			int orientacion =  r.nextInt(4)+1;			// Orientacion que define la palabra
+			int orientacion =  r.nextInt(5)+1;			// Orientacion que define la palabra
 
 			posicion[0] = r.nextInt(tamano);
 			posicion[1] = r.nextInt(tamano);
@@ -102,7 +102,6 @@ public class SopaDeLetras {
 			try
 			{
 				// Esta cosa ^ es un operador XOR
-
 				switch (orientacion) {
 				case 1:
 					if(!(sopa[posicion[0]][posicion[1]+i] != '\u0000' ^ sopa[posicion[0]][posicion[1]+i] != palabra.charAt(i)))
@@ -126,7 +125,13 @@ public class SopaDeLetras {
 					if(!(sopa[posicion[0]][posicion[1]-i] != '\u0000' ^ sopa[posicion[0]][posicion[1]-i] != palabra.charAt(i)))
 					{
 						return false;
-					}
+					}					
+					break;
+				case 5:
+					if(!(sopa[posicion[0]+i][posicion[1]+i] != '\u0000' ^ sopa[posicion[0]+i][posicion[1]+i] != palabra.charAt(i)))
+					{
+						return false;
+					}					
 					break;
 				}
 			}
@@ -158,6 +163,10 @@ public class SopaDeLetras {
 			case 4:
 				sopa[posicion[0]][posicion[1]-i] = palabra.toUpperCase().charAt(i);
 				break;
+			case 5:
+				sopa[posicion[0]+i][posicion[1]+i] = palabra.toUpperCase().charAt(i);
+				break;
+			
 
 			}
 		}
